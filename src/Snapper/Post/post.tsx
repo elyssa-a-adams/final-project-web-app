@@ -1,15 +1,15 @@
 import { Button, Card, Stack } from "react-bootstrap";
 import PostHeader from "./PostHeader/postheader";
 
-function Post() {
+function Post( post: any) {
     return (
         <div>
         <Card style={{backgroundColor: "#E8E8E8", maxWidth: "1000px"}}>
-      <Card.Header style={{ backgroundColor: "#E8E8E8" }}><PostHeader/></Card.Header>
+      <Card.Header style={{ backgroundColor: "#E8E8E8" }}><PostHeader post={post} /></Card.Header>
       <Card.Body>
-      <Card.Img src="../../images/trunkfish.jpeg" />
+      <Card.Img src={`../../images/${post.image}`} />
       </Card.Body>
-      <Card.Footer className="text-muted">Some really cool caption about the fish I saw while scuba diving.</Card.Footer>
+      <Card.Footer className="text-muted">{post.caption}</Card.Footer>
     </Card>
     </div>
     );
