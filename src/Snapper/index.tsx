@@ -9,7 +9,7 @@ const API_BASE = process.env.REACT_APP_API_BASE;
 function Snapper() {
   const [posts, setPosts] = useState<any[]>([]);
   const [post, setPost] = useState({
-    userId: "ScubaSteve",
+    username: "ScubaSteve",
     image: "trunkfish.JPG",
     caption: "Some really cool caption about the fish I saw while scuba diving.",
     location: "Your mom's house.",
