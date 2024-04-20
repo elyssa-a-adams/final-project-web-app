@@ -1,5 +1,7 @@
 import { Button, Card, Stack } from "react-bootstrap";
 import PostHeader from "./PostHeader/postheader";
+import { useState, useEffect } from "react";
+import * as client from "../../Users/client";
 
 function Post( post: any) {
   const postInfo = () => {
