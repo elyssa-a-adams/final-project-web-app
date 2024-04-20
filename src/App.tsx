@@ -18,7 +18,6 @@ function App() {
         <Route path="/Opening/*" element={<OpeningPage />} />
         <Route path="/Profile/*" element={<Profile />} />
       </Routes>
-      <Snapper />
     </div>
   </HashRouter>
   );
