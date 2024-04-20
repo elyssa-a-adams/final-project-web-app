@@ -9,17 +9,14 @@ export interface Post {
   location: Date,
   comments: [],
 };
-const api = axios.create({
-    withCredentials: true
-  });
 export const deletePost = async (postId: string) => {
-  const response = await api
+  const response = await axios
     .delete(`${POSTS_API}/${postId}`);
   return response.data;
 };
 export const createCourse = async (postId: any, post: any) => {
     console.log("createCourse", postId, post);
-    const response = await api.post(
+    const response = await axios.post(
       `${POSTS_API}`,
       post
     );
@@ -27,18 +24,19 @@ export const createCourse = async (postId: any, post: any) => {
     return response.data;
   };  
 export const findCommentsForPost = async (postId: string) => {
-  const response = await api
+  const response = await axios
     .get(`${POSTS_API}/${postId}/comments`);
   return response.data;
 };
 export const findAllPosts = async () => {
-    console.log("findAllCourses");
-    const response = await api
+    console.log("findAllPosts");
+    const response = await axios
       .get(`${POSTS_API}`);
+      console.log("response", response.data);
     return response.data;
   };
 export const updatePost = async (post: { _id: any; }) => {
-    const response = await api.
+    const response = await axios.
       put(`${POSTS_API}/${post._id}`, post);
     return response.data;
   };

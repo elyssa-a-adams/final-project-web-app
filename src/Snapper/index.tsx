@@ -19,7 +19,7 @@ function Snapper() {
     console.log("fetchPosts");
     const posts = await client.findAllPosts();
     setPosts(posts);
-    console.log(posts);
+    console.log("posts", posts);
   };
   useEffect(() => { fetchPosts(); }, []);
 
@@ -31,9 +31,9 @@ function Snapper() {
       </div>
       <div>
       <ListGroup style={{backgroundColor: "#0E1428"}}>
-      {posts.map((post) => (
-            <div key={post._id} >
-              <ListGroup.Item style={{backgroundColor: "#0E1428"}}><Post post={post} /></ListGroup.Item>
+      {posts.map((info) => (
+            <div key={info._id} >
+              <ListGroup.Item style={{backgroundColor: "#0E1428"}}><Post post={info} /></ListGroup.Item>
             </div>
           ))}
     </ListGroup>
