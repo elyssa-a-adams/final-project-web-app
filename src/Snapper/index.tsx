@@ -30,10 +30,10 @@ function Snapper() {
       < NavBar />
       </div>
       <div>
-      <ListGroup style={{backgroundColor: "#0E1428"}}>
+      <ListGroup style={{backgroundColor: "white"}}>
       {posts.map((info) => (
             <div key={info._id} >
-              <ListGroup.Item style={{backgroundColor: "#0E1428"}}><Post post={info} /></ListGroup.Item>
+              <ListGroup.Item style={{backgroundColor: "white"}}><Post post={info} /></ListGroup.Item>
             </div>
           ))}
     </ListGroup>

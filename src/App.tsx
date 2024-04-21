@@ -7,6 +7,7 @@ import Snapper from './Snapper';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import OpeningPage from './Users/OpeningPage';
 import Profile from './Users/Profile';
+import UserTable from './Users/Table';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/Home/*" element={<Snapper />} />
         <Route path="/Opening/*" element={<OpeningPage />} />
         <Route path="/Profile/*" element={<Profile />} />
+        <Route path="/Users/*" element={<UserTable />} />
       </Routes>
     </div>
   </HashRouter>

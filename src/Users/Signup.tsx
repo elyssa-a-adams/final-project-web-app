@@ -10,7 +10,7 @@ const signup = async () => {
         console.log("signup");
         const result = await client.signup(user);
         console.log("signup result", result);
-        navigate("/Kanbas/Account/Profile");
+        navigate("/Profile");
     } catch (err) {
         setError((err as { response: { data: { message: string } } }).response?.data.message);
     }

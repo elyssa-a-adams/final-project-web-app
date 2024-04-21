@@ -1,6 +1,7 @@
 import * as client from "./client";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import NavBar from "../Snapper/NavBar/navbar";
 export default function Profile() {
   const [profile, setProfile] = useState({
     username: "",
@@ -18,7 +19,7 @@ export default function Profile() {
   };
   const signout = async () => {
     const result = await client.signout();
-    navigate("/Kanbas/Account/Signin");
+    navigate("Opening/");
   };
   const save = async () => {
     const result = await client.updateUser(profile);
@@ -28,6 +29,7 @@ export default function Profile() {
   }, []);
   return (
     <div>
+       <NavBar />
       <h1>Profile</h1>
       {profile && (
         <div>
@@ -69,13 +71,11 @@ export default function Profile() {
           >
             <option value="USER">User</option>
             <option value="ADMIN">Admin</option>
-            <option value="FACULTY">Faculty</option>
-            <option value="STUDENT">Student</option>
           </select>
           <button onClick={() => save()}> Save </button>
           <button onClick={() => signout()}>Signout</button>
           <Link
-            to="/Kanbas/Account/Admin/Users"
+            to="/Users/"
             className="btn btn-warning w-100"
           >
             Users

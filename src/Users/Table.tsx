@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import * as client from "./client";
 import { User } from "./client";
-import { BsTrash3Fill, BsPlusCircleFill } from "react-icons/bs";
+import { BsTrash3Fill } from "react-icons/bs";
 import {v4 as uuidv4} from 'uuid';
-import { create } from "domain";
+import NavBar from "../Snapper/NavBar/navbar";
 export default function UserTable() {
   const [users, setUsers] = useState<User[]>([]);
   const [user, setUser] = useState<User>({
@@ -32,6 +32,7 @@ export default function UserTable() {
   useEffect(() => { fetchUsers(); }, []);
   return (
     <div>
+      <NavBar />
       <h1>User Table</h1>
       <table className="table">
         <thead>
