@@ -2,7 +2,7 @@ import axios from "axios";
 const API_BASE = process.env.REACT_APP_API_BASE;
 const USERS_API = `${API_BASE}/api/users`;
 const api = axios.create({
-  withCredentials: true
+  withCredentials: true,
 });
 export interface User {
   _id: string;
@@ -29,8 +29,13 @@ export const updateUser = async (user: any) => {
   return response.data;
 };
 export const profile = async () => {
-  const response = await api.post(`${USERS_API}/profile`);
-  return response.data;
+  try {
+    const response = await api.post(`${USERS_API}/profile`);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
 };
 export const findAllUsers = async () => {
   const response = await api.get(`${USERS_API}`);
@@ -50,7 +55,6 @@ export const signout = async () => {
   return response.data;
 };
 export const findUsersByUsername = async (username: string) => {
-  const response = await
-    api.get(`${USERS_API}?username=${username}`);
+  const response = await api.get(`${USERS_API}?username=${username}`);
   return response.data;
 };

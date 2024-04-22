@@ -15,11 +15,16 @@ export default function Profile() {
   const navigate = useNavigate();
   const fetchProfile = async () => {
     const account = await client.profile();
+    console.log("account", account);
+    if (!account) {
+      console.log("account");
+      navigate("/Opening/");
+    }
     setProfile(account);
   };
   const signout = async () => {
     const result = await client.signout();
-    navigate("Opening/");
+    navigate("/Home/");
   };
   const save = async () => {
     const result = await client.updateUser(profile);
