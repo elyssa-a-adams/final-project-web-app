@@ -6,6 +6,7 @@ import './App.css';
 import Snapper from './Snapper';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import OpeningPage from './Users/OpeningPage';
+import CreatePostPage from './Snapper/Post/NewPost';
 import Profile from './Users/Profile';
 import UserTable from './Users/Table';
 
@@ -16,6 +17,7 @@ function App() {
           <Routes>
         <Route path="/" element={<Navigate to="/Home" />} />
         <Route path="/Home/*" element={<Snapper />} />
+        <Route path='/NewPost/*' element={<CreatePostPage />} />
         <Route path="/Opening/*" element={<OpeningPage />} />
         <Route path="/Profile/*" element={<Profile />} />
         <Route path="/Users/*" element={<UserTable />} />

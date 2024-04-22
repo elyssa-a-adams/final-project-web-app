@@ -5,11 +5,12 @@ const api = axios.create({
   withCredentials: true
 });
 export interface Post {
-  id: { type: String, required: true},
-  username: { type: String, required: true},
+  id:  String,
+  username: String,
   image: String,
-  caption: Date,
-  location: Date,
+  imageData: Buffer,
+  caption: String,
+  location: String,
   comments: [],
 };
 export const deletePost = async (postId: string) => {
@@ -17,8 +18,7 @@ export const deletePost = async (postId: string) => {
     .delete(`${POSTS_API}/${postId}`);
   return response.data;
 };
-export const createCourse = async (postId: any, post: any) => {
-    console.log("createCourse", postId, post);
+export const createPost = async (post: any) => {
     const response = await api.post(
       `${POSTS_API}`,
       post

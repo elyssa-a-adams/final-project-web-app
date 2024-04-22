@@ -4,12 +4,12 @@ import Signup from "./Signup";
 import NavBar from "../Snapper/NavBar/navbar";
 
 export default function OpeningPage() {
-    return (
-        <div>
-        <NavBar />
-        <h1>Opening Page</h1>
-        <Signin />
-        <Signup />
-        </div>
-    );
-    };
+  return (
+    <div>
+      <NavBar />
+      <h1>Opening Page</h1>
+      <Signin />
+      <Signup />
+    </div>
+  );
+}
