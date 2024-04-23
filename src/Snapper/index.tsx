@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import NavBar from "./NavBar/navbar";
 import { ListGroup } from "react-bootstrap";
 import Post from "./Post/post";
+import "./snapper.css";
 const API_BASE = process.env.REACT_APP_API_BASE;
 
 function Snapper() {
@@ -29,7 +30,7 @@ function Snapper() {
       <div>
       < NavBar />
       </div>
-      <div>
+      <div className="homepage">
       <ListGroup style={{backgroundColor: "white"}}>
       {posts.map((info) => (
             <div key={info._id} >

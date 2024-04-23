@@ -1,0 +1,23 @@
+.h1 {
+    font-family: Georgia;
+}
+.profilesettings {
+    font-family: Georgia;
+    font-size: large;
+    margin-bottom: 0px;
+}
+.profileinfo {
+    display: flex;
+    justify-content: center;
+}
+.profilecolumn {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.profilebutton {
+    margin: 5px;
+}
+.profileName {
+    display: flex;
+}

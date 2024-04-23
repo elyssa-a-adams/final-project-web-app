@@ -18,6 +18,7 @@ const signup = async () => {
   return (
     <div>
       <h1>Signup</h1>
+      <h3>New User? We can't wait to meet you! </h3>
       {error && <div>{error}</div>}
       <input value={user.username} onChange={(e) => setUser({
           ...user, username: e.target.value })} />

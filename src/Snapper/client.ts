@@ -31,6 +31,13 @@ export const findCommentsForPost = async (postId: string) => {
     .get(`${POSTS_API}/${postId}/comments`);
   return response.data;
 };
+export const findPostsForUser = async (username: string) => {
+  const response = await
+    api.get(`${POSTS_API}?username=${username}`);
+    console.log("response", response.data); 
+    console.log("username", username);
+  return response.data;
+};
 export const findAllPosts = async () => {
     console.log("findAllPosts");
     const response = await api
