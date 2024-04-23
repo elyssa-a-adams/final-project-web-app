@@ -11,6 +11,8 @@ export interface User {
   role: string;
   firstName: string;
   lastName: string;
+  followers: Array<String>;
+  following: Array<String>;
 }
 export const signin = async (credentials: User) => {
   console.log("reached signin");

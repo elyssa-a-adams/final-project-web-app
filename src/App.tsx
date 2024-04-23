@@ -9,6 +9,7 @@ import OpeningPage from './Users/OpeningPage';
 import Profile from './Users/Profile';
 import UserTable from './Users/Table';
 import Search from './Snapper/Search/search';
+import OtherUserProfile from './Users/OtherUserProfile';
 
 function App() {
   return (
@@ -18,7 +19,10 @@ function App() {
         <Route path="/" element={<Navigate to="/Home" />} />
         <Route path="/Home/*" element={<Snapper />} />
         <Route path="/Opening/*" element={<OpeningPage />} />
-        <Route path="/Profile/*" element={<Profile />} />
+        <Route path="/Profile/" >
+        <Route path=":username" element={<OtherUserProfile />} />
+        <Route path="" element={<Profile />} />
+        </Route>
         <Route path="/Search/*" element={<Search />} />
         <Route path="/Users/*" element={<UserTable />} />
       </Routes>

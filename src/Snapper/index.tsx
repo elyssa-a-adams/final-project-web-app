@@ -9,13 +9,6 @@ const API_BASE = process.env.REACT_APP_API_BASE;
 
 function Snapper() {
   const [posts, setPosts] = useState<any[]>([]);
-  const [post, setPost] = useState({
-    username: "ScubaSteve",
-    image: "trunkfish.JPG",
-    caption: "Some really cool caption about the fish I saw while scuba diving.",
-    location: "Your mom's house.",
-    comments: [],
-  });
   const fetchPosts = async () => {
     const posts = await client.findAllPosts();
     if (window.location.href.indexOf("city") > -1) {
@@ -24,11 +17,10 @@ function Snapper() {
       setPosts(newposts);
       return;
     } else {
-      const posts = await client.findAllPosts();
       setPosts(posts);
     }
   };
-  useEffect(() => { fetchPosts(); }, []);
+  useEffect(() => { fetchPosts(); }, [window.location]);
 
 
   return (

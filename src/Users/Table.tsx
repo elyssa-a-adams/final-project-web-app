@@ -8,7 +8,7 @@ export default function UserTable() {
   const [users, setUsers] = useState<User[]>([]);
   const [user, setUser] = useState<User>({
     _id: "", username: "", password: "", firstName: "",
-    lastName: "", role: "USER" });
+    lastName: "", role: "USER", followers: [], following: []});
   const createUser = async () => {
     try {
       const newUser = await client.createUser(user);
