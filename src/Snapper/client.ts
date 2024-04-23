@@ -9,7 +9,7 @@ export interface Post {
   username: { type: String, required: true},
   image: String,
   caption: Date,
-  location: Date,
+  location: string,
   comments: [],
 };
 export const deletePost = async (postId: string) => {
@@ -36,6 +36,14 @@ export const findPostsForUser = async (username: string) => {
     api.get(`${POSTS_API}?username=${username}`);
     console.log("response", response.data); 
     console.log("username", username);
+  return response.data;
+};
+export const findPostsForCity = async (city: string) => {
+  console.log("findPostsForCity");
+  const response = await
+    api.get(`${POSTS_API}?city=${city}`);
+    console.log("response", response.data); 
+    console.log("city", city);
   return response.data;
 };
 export const findAllPosts = async () => {

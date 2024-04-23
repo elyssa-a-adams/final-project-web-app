@@ -16,6 +16,7 @@ function NavBar() {
           <Nav.Link><Link style={{color: "black"}} to="/Home">Home</Link></Nav.Link>
             <Nav.Link href="#link">Post</Nav.Link>
             <Nav.Link><Link style={{color: "black"}} to="/Profile">Profile</Link></Nav.Link>
+            <Nav.Link><Link style={{color: "black"}} to="/Search">Search</Link></Nav.Link>
             <NavDropdown title="More" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
