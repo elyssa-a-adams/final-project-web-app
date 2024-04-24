@@ -46,11 +46,15 @@ export default function Profile() {
     comments: [],
   });
   const fetchPosts = async (username: string) => {
+      if (username === "") {
+        return;
+      }
       const posts = await postsClient.findPostsForUser(username);
       setPosts(posts);
   };
   useEffect(() => {
     if(profile?.username !== ""){
+      console.log("fetching posts");
       fetchPosts(profile.username);
     }
   }, [profile.username]);

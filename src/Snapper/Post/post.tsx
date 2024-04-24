@@ -7,7 +7,7 @@ function Post( post: any) {
         <Card style={{backgroundColor: "#E8E8E8", maxWidth: "1000px"}}>
       <Card.Header style={{ backgroundColor: "#E8E8E8" }}><PostHeader post={post.post} /></Card.Header>
       <Card.Body>
-      <Card.Img src={`../../images/${post.post.image}`} />
+      <Card.Img src={post.post.image} />
       </Card.Body>
       <Card.Footer className="text-muted">{post.post.caption}</Card.Footer>
     </Card>

@@ -11,6 +11,7 @@ import UserTable from './Users/Table';
 import Search from './Snapper/Search/search';
 import OtherUserProfile from './Users/OtherUserProfile';
 import UsersList from './Users/UsersList';
+import CreatePost from './Snapper/CreatePost/CreatePost';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="" element={<Profile />} />
         </Route>
         <Route path="/Search/*" element={<Search />} />
+        <Route path="/Post/*" element={<CreatePost />} />
         <Route path="/Users/*" element={<UserTable />} />
       </Routes>
     </div>

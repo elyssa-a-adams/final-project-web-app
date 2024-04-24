@@ -17,8 +17,8 @@ export const deletePost = async (postId: string) => {
     .delete(`${POSTS_API}/${postId}`);
   return response.data;
 };
-export const createCourse = async (postId: any, post: any) => {
-    console.log("createCourse", postId, post);
+export const createPost = async (post: any) => {
+    console.log("createPost", post);
     const response = await api.post(
       `${POSTS_API}`,
       post
