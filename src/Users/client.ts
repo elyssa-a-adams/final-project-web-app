@@ -31,6 +31,7 @@ export const updateUser = async (user: any) => {
   return response.data;
 };
 export const profile = async () => {
+  console.log("reached profile");
   try {
     const response = await api.post(`${USERS_API}/profile`);
     return response.data;

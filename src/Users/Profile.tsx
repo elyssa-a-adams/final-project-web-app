@@ -8,6 +8,7 @@ import { ListGroup } from "react-bootstrap";
 import Post from "../Snapper/Post/post";
 export default function Profile() {
   const [profile, setProfile] = useState({
+    profilePic: "",
     username: "",
     password: "",
     firstName: "",
@@ -17,6 +18,17 @@ export default function Profile() {
     role: "USER",
   });
   const navigate = useNavigate();
+  function storeImageInPost(event: any) {
+    console.log("reached storeImageInPost");
+    const reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = () => {
+        setProfile({ ...profile, profilePic: reader.result as string });
+    }
+    reader.onerror = error => {
+        console.log(error);
+    }
+  }
   const fetchProfile = async () => {
     const account = await client.profile();
     console.log("account", account);
@@ -24,6 +36,7 @@ export default function Profile() {
       console.log("account");
       navigate("/Opening/");
     }
+    console.log("account", account);
     setProfile(account);
     fetchPosts(account?.username);
   };
@@ -32,7 +45,11 @@ export default function Profile() {
     navigate("/Home/");
   };
   const save = async () => {
+    console.log("reached save");
     const result = await client.updateUser(profile);
+    console.log("result", result);
+    fetchProfile();
+    fetchPosts(profile.username);
   };
   useEffect(() => {
     fetchProfile();
@@ -118,6 +135,8 @@ export default function Profile() {
             <option value="USER">User</option>
             <option value="ADMIN">Admin</option>
           </select>
+          <p className="profilesettings">Profile Picture</p>
+          <input accept="image/*" type="file" onChange={storeImageInPost} />
           <button className="btn btn-primary profilebutton" onClick={() => save()}> Save </button>
           <button className="btn btn-primary profilebutton" onClick={() => signout()}>Signout</button>
           {profile.role === "ADMIN" && (<Link

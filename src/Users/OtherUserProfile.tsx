@@ -9,6 +9,7 @@ import Post from "../Snapper/Post/post";
 export default function OtherUserProfile() {
   let { username } = useParams();
   type ProfileType = {
+    profilePic: string;
     username: string;
     password: string;
     firstName: string;
@@ -21,6 +22,7 @@ export default function OtherUserProfile() {
   };
 
   const [profile, setProfile] = useState<ProfileType>({
+    profilePic: "",
     username: "",
     password: "",
     firstName: "",
@@ -32,6 +34,7 @@ export default function OtherUserProfile() {
     following: [],
   });
   const [viewingProfile, setViewingProfile] = useState<ProfileType>({
+    profilePic: "",
     username: "",
     password: "",
     firstName: "",

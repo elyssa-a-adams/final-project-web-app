@@ -24,7 +24,7 @@ const fetchUser = async () => {
 useEffect(() => { fetchUser(); }, []);
     return(
       <Stack direction="horizontal" gap={2}>
-      <div className="p-2"><Image className="profilePhoto" src={`../../images/${postUser.profilePic}`} roundedCircle width='50px' height='50px' /></div>
+      <div className="p-2"><Image className="profilePhoto" src={postUser.profilePic} roundedCircle width='50px' height='50px' /></div>
       <div className="p-2"><Link to={`/Profile/${postUser.username}`}>{postUser.username}</Link></div>
       <div className="p-3">{post.post.location}</div>
     </Stack>

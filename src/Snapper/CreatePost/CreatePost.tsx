@@ -8,6 +8,7 @@ import PostHeader from "../Post/PostHeader/postheader";
 
 export default function CreatePost() {
   const [profile, setProfile] = useState({
+    profilePic: "",
     username: "",
     password: "",
     firstName: "",
@@ -42,13 +43,10 @@ export default function CreatePost() {
   }, []);
 
   function storeImageInPost(event: any) {
-    const file = event.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = () => {
-        console.log(reader.result);
         setPost({ ...post, image: reader.result as string });
-        console.log(post);
     }
     reader.onerror = error => {
         console.log(error);
