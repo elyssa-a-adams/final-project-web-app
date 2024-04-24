@@ -7,16 +7,30 @@ import { Card } from "react-bootstrap";
 import PostHeader from "../Post/PostHeader/postheader";
 
 export default function CreatePost() {
-  const [profile, setProfile] = useState({
-    profilePic: "",
-    username: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    dob: "",
-    email: "",
-    role: "USER",
-  });
+    type ProfileType = {
+        profilePic: string;
+        username: string;
+        password: string;
+        firstName: string;
+        lastName: string;
+        dob: string;
+        email: string;
+        role: string;
+        followers: string[];
+        following: string[];
+      };
+      const [profile, setProfile] = useState<ProfileType>({
+        profilePic: "",
+        username: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        dob: "",
+        email: "",
+        role: "USER",
+        followers: [],
+        following: [],
+      });
   const [post, setPost] = useState({
     username: "",
     image: "",

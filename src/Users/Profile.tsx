@@ -7,7 +7,19 @@ import * as postsClient from "../Snapper/client";
 import { ListGroup } from "react-bootstrap";
 import Post from "../Snapper/Post/post";
 export default function Profile() {
-  const [profile, setProfile] = useState({
+  type ProfileType = {
+    profilePic: string;
+    username: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    dob: string;
+    email: string;
+    role: string;
+    followers: string[];
+    following: string[];
+  };
+  const [profile, setProfile] = useState<ProfileType>({
     profilePic: "",
     username: "",
     password: "",
@@ -16,6 +28,8 @@ export default function Profile() {
     dob: "",
     email: "",
     role: "USER",
+    followers: [],
+    following: [],
   });
   const navigate = useNavigate();
   function storeImageInPost(event: any) {
