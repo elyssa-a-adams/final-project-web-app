@@ -18,7 +18,7 @@ export default function Signin() {
       <h3>User already? Welcome back! </h3>
       <input value={credentials.username} onChange={(e) =>
         setCredentials({ ...credentials, username: e.target.value })} />
-      <input value={credentials.password} onChange={(e) =>
+      <input type="password" value={credentials.password} onChange={(e) =>
         setCredentials({ ...credentials, password: e.target.value })}/>
       <button onClick={signin}> Signin </button>
     </div>

@@ -116,12 +116,13 @@ export default function Profile() {
           </select>
           <button className="btn btn-primary profilebutton" onClick={() => save()}> Save </button>
           <button className="btn btn-primary profilebutton" onClick={() => signout()}>Signout</button>
-          <Link
+          {profile.role === "ADMIN" && (<Link
             to="/Users/"
             className="btn btn-warning w-100"
           >
             Users
-          </Link>
+          </Link>)
+            }
           </div>
           <div className="homepage">
       <ListGroup style={{backgroundColor: "white"}}>
