@@ -33,15 +33,20 @@ export default function Search() {
             `http://api.weatherapi.com/v1/current.json?key=de89c429a2fb44b595372203242304&q=${searchTerm}&aqi=no`
         );
         const weatherData = await weather.json();
-        console.log(weatherData);
         setWeather(weatherData);
-        console.log(weatherData.current.condition.text);
+        sessionStorage.setItem("weatherData", JSON.stringify(weatherData));
+        navigate(`/Search/?city=${searchTerm}`);
     };
 
     useEffect(() => {
         const searchTerm = sessionStorage.getItem('searchTerm');
         if (searchTerm) {
             setSearchTerm(searchTerm);
+            const storedWeatherData = sessionStorage.getItem('weatherData');
+            if (storedWeatherData) {
+                setWeather(JSON.parse(storedWeatherData));
+            }
+            navigate(`/Search/?city=${searchTerm}`);
         }
     }, []);
 

@@ -115,11 +115,11 @@ export default function OtherUserProfile() {
       <div className="profileheadbar">
         <h1 className="profileinfo h1">{username}</h1>
         <div className="followerslist">
-          <p>Followers</p>
+          <p><Link to={`/Profile/${profile?.username}/Followers`}>Followers</Link></p>
           <p>{profile?.followers.length}</p>
         </div>
         <div className="followerslist">
-          <p>Following</p>
+        <p><Link to={`/Profile/${profile?.username}/Following`}>Following</Link></p>
           <p>{profile?.following?.length}</p>
         </div>
         {profile.followers.includes(viewingProfile?.username) && (
