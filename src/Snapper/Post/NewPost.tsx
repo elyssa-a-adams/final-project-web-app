@@ -7,10 +7,8 @@ export default function NewPost() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [post, setPost] = useState<Post>({
-    id: "",
     username: "",
     image: "",
-    imageData: Buffer.from(""),
     caption: "",
     location: "",
     comments: [],
@@ -18,10 +16,9 @@ export default function NewPost() {
 
   const handleSubmit = async () => {
     try {
-      setPost({ ...post, username: "test" });
+      setPost({ ...post, username: "test"});
       const result = await client.createPost(post);
-      console.log("create result", result);
-      navigate("/Home");
+      console.log("result", result);
     } catch (err) {
       setError(
         (err as { response: { data: { message: string } } }).response?.data
@@ -52,25 +49,26 @@ export default function NewPost() {
         </label>
         <label>
           Image:
-          <input
-            type="file"
-            onChange={(e) => {
-              const file = e.target.files?.[0];
-              if (file) {
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                  setPost({
-                    ...post,
-                    image: file.name,
-                    imageData: Buffer.from(reader.result as string),
-                  });
-                };
-                reader.readAsDataURL(file);
-              }
+          <input 
+            type="file" 
+            name="image" 
+            accept="image/*" 
+            required 
+            onChange={async (e) => {
+              if (!e.target.files) return;
+              const file = e.target.files[0];
+              const reader = new FileReader();
+              reader.onloadend = () => {
+                setPost({...post, image: reader.result as string});
+              };
+              reader.readAsDataURL(file);
+            
             }}
           />
         </label>
-        <button onClick={handleSubmit}>Post!</button>
+        <button type="button" onClick={handleSubmit}>
+          Create Full Post!
+        </button>
       </div>
     </div>
   );

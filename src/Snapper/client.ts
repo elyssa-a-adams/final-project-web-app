@@ -5,10 +5,8 @@ const api = axios.create({
   withCredentials: true
 });
 export interface Post {
-  id:  String,
   username: String,
   image: String,
-  imageData: Buffer,
   caption: String,
   location: String,
   comments: [],
