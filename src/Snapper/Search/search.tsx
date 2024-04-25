@@ -7,6 +7,8 @@ import "./search.css";
 export default function Search() {
     const [searchTerm, setSearchTerm] = useState("");
     const navigate = useNavigate();
+    const [searchResultsReady, setSearchResultsReady] = useState(false);
+    const [viewSearchResults, setViewSearchResults] = useState(false);
     const search = async () => {
         fetchSearchResults();
     };
@@ -35,6 +37,7 @@ export default function Search() {
         const weatherData = await weather.json();
         setWeather(weatherData);
         sessionStorage.setItem("weatherData", JSON.stringify(weatherData));
+        setSearchResultsReady(true);
         navigate(`/Search/?city=${searchTerm}`);
     };
 
@@ -45,7 +48,9 @@ export default function Search() {
             const storedWeatherData = sessionStorage.getItem('weatherData');
             if (storedWeatherData) {
                 setWeather(JSON.parse(storedWeatherData));
+                setViewSearchResults(true);
             }
+            setSearchResultsReady(true);
             navigate(`/Search/?city=${searchTerm}`);
         }
     }, []);
@@ -58,16 +63,22 @@ export default function Search() {
                 <input
                     placeholder="Search for Weather in Dive Site"
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={(e) => {
+                        setSearchTerm(e.target.value);
+                        setSearchResultsReady(false);
+                        setViewSearchResults(false);
+                    }}
                 />
-                <button onClick={search}> Search </button>
+                <button onClick={search} className="btn btn-primary buttons"> Search </button>
+                {searchResultsReady && <button onClick={() => setViewSearchResults(true)} className="btn btn-primary buttons"> View Details </button>}
+                {viewSearchResults && <div>
                 <div>Conditions: {weather?.current?.condition?.text}</div>
-                <div>Visibility: {weather?.current?.cloud}</div>
+                <div>Visibility: {weather?.current?.cloud} %</div>
                 <div>Temperature: {weather?.current?.temp_f} degrees</div>
                 <div>Location: {weather?.location?.name}</div>
                 <div>Region: {weather?.location?.region}</div>
                 <div>Country: {weather?.location?.country}</div>
-                <button onClick={() => navigate(`/Home/?city=${searchTerm}`)}> Show Posts In This City </button>
+                <button className="btn btn-primary buttons" onClick={() => navigate(`/Home/?city=${searchTerm}`)}> Show Posts In This City </button></div>}
             </div>
         </div>
     );
