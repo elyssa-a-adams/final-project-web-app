@@ -46,9 +46,8 @@ function Snapper() {
     const posts = await client.findAllPosts();
     if (window.location.href.indexOf("city") > -1) {
       const city = window.location.href.split("=")[1];
-      const newposts = posts.filter((post: { location: string; }) => post.location.toLowerCase().includes(city));
+      const newposts = posts.filter((post: { location: string; }) => post.location.toLowerCase().includes(city.toLowerCase()));
       setPosts(newposts);
-      return;
     } else if (profile.username !== "") {
         const yourPosts = posts.filter((post: { username: string; }) => post.username === profile.username);
         const followersPosts = posts.filter((post: { username: string; }) => profile.following.includes(post.username));
