@@ -64,6 +64,7 @@ export default function Profile() {
     console.log("result", result);
     fetchProfile();
     fetchPosts(profile.username);
+    window.location.reload();
   };
   useEffect(() => {
     fetchProfile();
