@@ -4,7 +4,43 @@ import { User } from "./client";
 import { BsTrash3Fill } from "react-icons/bs";
 import {v4 as uuidv4} from 'uuid';
 import NavBar from "../Snapper/NavBar/navbar";
+import { useNavigate } from "react-router-dom";
 export default function UserTable() {
+  type ProfileType = {
+    profilePic: string;
+    username: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    dob: string;
+    email: string;
+    role: string;
+    followers: string[];
+    following: string[];
+  };
+  const [profile, setProfile] = useState<ProfileType>({
+    profilePic: "",
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    dob: "",
+    email: "",
+    role: "USER",
+    followers: [],
+    following: [],
+  });
+  const navigate = useNavigate();
+  const fetchProfile = async () => {
+    const account = await client.profile();
+    console.log("account", account);
+    if (!account || account.role !== "ADMIN") {
+      console.log("account");
+      navigate("/Home/");
+    }
+    console.log("account", account);
+    setProfile(account);
+  };
   const [users, setUsers] = useState<User[]>([]);
   const [user, setUser] = useState<User>({
     _id: "", username: "", password: "", firstName: "",
@@ -29,7 +65,10 @@ export default function UserTable() {
     const users = await client.findAllUsers();
     setUsers(users);
   };
-  useEffect(() => { fetchUsers(); }, []);
+  useEffect(() => { 
+    fetchProfile();
+    fetchUsers();
+   }, []);
   return (
     <div>
       <NavBar />

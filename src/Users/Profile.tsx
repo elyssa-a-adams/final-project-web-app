@@ -60,6 +60,7 @@ export default function Profile() {
   };
   const save = async () => {
     console.log("reached save");
+    console.log("profile", profile);
     const result = await client.updateUser(profile);
     console.log("result", result);
     fetchProfile();
