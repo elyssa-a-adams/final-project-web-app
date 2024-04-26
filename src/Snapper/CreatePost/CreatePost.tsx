@@ -51,6 +51,7 @@ export default function CreatePost() {
   };
   const save = async () => {
     const result = await postsClient.createPost(post);
+    navigate("/Home/");
   };
   useEffect(() => {
     fetchProfile();

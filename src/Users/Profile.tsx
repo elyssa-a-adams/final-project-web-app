@@ -101,6 +101,7 @@ export default function Profile() {
           <p className="profilesettings">Username</p>
           <input
             placeholder="Username"
+            readOnly
             value={profile?.username}
             onChange={(e) =>
               setProfile({ ...profile, username: e.target.value })
