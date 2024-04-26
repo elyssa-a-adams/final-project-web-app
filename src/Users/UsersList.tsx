@@ -33,7 +33,7 @@ function UsersList(tableType: any) {
       <h1>{tableType.type}</h1>
           {users.map((user: any) => (
             <div>
-      <div className="p-2"><Image className="profilePhoto" src={`../../images/${user.profilePic}`} roundedCircle width='50px' height='50px' /></div>
+      <div className="p-2"><Image className="profilePhoto" src={user.profilePic} roundedCircle width='50px' height='50px' /></div>
       <div className="p-2"><Link to={`/Profile/${user.username}`}>{user.username}</Link></div>
       </div>
             ))}

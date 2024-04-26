@@ -145,6 +145,7 @@ export default function Profile() {
             value={profile.email}
             onChange={(e) => setProfile({ ...profile, email: e.target.value })}
           />
+          {profile.role === "ADMIN" && <div>
           <p className="profilesettings">User Type</p>
           <select
             onChange={(e) => setProfile({ ...profile, role: e.target.value })}
@@ -152,6 +153,7 @@ export default function Profile() {
             <option value="USER">User</option>
             <option value="ADMIN">Admin</option>
           </select>
+          </div>}
           <p className="profilesettings">Profile Picture</p>
           <input accept="image/*" type="file" onChange={storeImageInPost} />
           <button className="btn btn-primary profilebutton" onClick={() => save()}> Save </button>

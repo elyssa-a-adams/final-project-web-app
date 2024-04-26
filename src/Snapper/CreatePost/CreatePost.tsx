@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as userClient from "../../Users/client";
 import * as postsClient from "../client";
 import NavBar from "../NavBar/navbar";
-import { Card } from "react-bootstrap";
+import { Card, Stack, Image } from "react-bootstrap";
+import "./createpost.css";
 import PostHeader from "../Post/PostHeader/postheader";
 
 export default function CreatePost() {
@@ -71,7 +72,7 @@ export default function CreatePost() {
   return (
     <div>
        <NavBar />
-      <h1 className="profileinfo h1">Profile</h1>
+      <h1 className="profileinfo h1">Create Post</h1>
       {profile && (
         <div className="profileinfo">
           <div className="profilecolumn">
@@ -98,7 +99,11 @@ export default function CreatePost() {
           </div>
           <div>
         <Card style={{backgroundColor: "#E8E8E8", maxWidth: "1000px"}}>
-      <Card.Header style={{ backgroundColor: "#E8E8E8" }}><PostHeader post={post} /></Card.Header>
+      <Card.Header style={{ backgroundColor: "#E8E8E8" }}><Stack direction="horizontal" gap={2}>
+      <div className="p-2"><Image className="profilePhoto" src={profile.profilePic} roundedCircle width='50px' height='50px' /></div>
+      <div className="p-2"><Link to={`/Profile/${profile.username}`}>{profile.username}</Link></div>
+      <div className="p-3">{post.location}</div>
+    </Stack></Card.Header>
       <Card.Body>
       <Card.Img src={post.image} />
       </Card.Body>
