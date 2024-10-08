@@ -1,5 +1,5 @@
 
-# HERE IS THE LINK TO THE WEBSITE
+# HERE IS THE LINK TO THE WEBSITE, Please allow website time to spin up
 
 https://main--snapper-media.netlify.app/#/Home
 
